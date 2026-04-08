@@ -5,9 +5,11 @@ import { Colors } from '@/utils/Colors';
 export const Button = ({
   title,
   type,
+  onPress,
 }: {
   title: string;
   type: 'top' | 'right' | 'number';
+  onPress: Function
 }) => {
   return (
     <TouchableOpacity
@@ -22,8 +24,8 @@ export const Button = ({
                 : Colors.btnLight,
         },
       ]}
-      onPress={() => {}}>
-      <Text style={{ fontSize: 34, color: Colors.white }}>{title}</Text>
+      onPress={(onPress) => {}}>
+      <Text style={{ fontSize: 34, color: type == "number"? Colors.black : Colors.white }}>{title}</Text>
     </TouchableOpacity>
   );
 };
