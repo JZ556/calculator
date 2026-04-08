@@ -10,26 +10,26 @@ export default function Calculator() {
         <Text style = {{fontSize:70, fontWeight:'300'}}>test</Text>
       </View>
       <View style = {styles.keypad}>
-        <Button title= 'C'/>
-        <Button title = '⌫'/>
-        <Button title = '%'/>
-        <Button title = '*'/>
-        <Button title= '7'/>
-        <Button title = '8'/>
-        <Button title = '9'/>
-        <Button title = 'x'/>
-        <Button title= '6'/>
-        <Button title = '5'/>
-        <Button title = '4'/>
-        <Button title = '-'/>
-        <Button title= '3'/>
-        <Button title = '2'/>
-        <Button title = '1'/>
-        <Button title = '+'/>
-        <Button title= '0'/>
-        <Button title = '00'/>
-        <Button title = '.'/>
-        <Button title = '='/>
+        <Button title= 'C' type='top'/>
+        <Button title = '⌫' type='top'/>
+        <Button title = '%' type='top'/>
+        <Button title = '*' type='right'/>
+        <Button title= '7' type='number'/>
+        <Button title = '8' type='number'/>
+        <Button title = '9' type='number'/>
+        <Button title = 'x' type='right'/>
+        <Button title= '6' type='number'/>
+        <Button title = '5' type='number'/>
+        <Button title = '4' type='number'/>
+        <Button title = '-' type='right'/>
+        <Button title= '3' type='number'/>
+        <Button title = '2' type='number'/>
+        <Button title = '1' type='number'/>
+        <Button title = '+' type='right'/>
+        <Button title= '0' type='number'/>
+        <Button title = '00' type='number'/>
+        <Button title = '.' type='number'/>
+        <Button title = '=' type='right'/>
       </View>
     </View>
   )

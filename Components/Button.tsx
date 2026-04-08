@@ -10,7 +10,19 @@ export const Button = ({
   type: 'top' | 'right' | 'number';
 }) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={() => {}}>
+    <TouchableOpacity
+      style={[
+        styles.button,
+        {
+          backgroundColor:
+            type == 'top'
+              ? Colors.btnDark
+              : type == 'right'
+                ? Colors.btnRight
+                : Colors.btnLight,
+        },
+      ]}
+      onPress={() => {}}>
       <Text style={{ fontSize: 34, color: Colors.white }}>{title}</Text>
     </TouchableOpacity>
   );
@@ -24,6 +36,6 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:Colors.dark,
+    backgroundColor: Colors.dark,
   },
 });
