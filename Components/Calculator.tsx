@@ -23,6 +23,24 @@ export default function Calculator() {
         setDisplayValue('0');
     };
 
+    const handleCalculation = () => {
+        const num1: number = parseFloat(firstValue);
+        const num2: number = parseFloat(displayValue);
+
+        if (operator === "+"){
+            setDisplayValue((num1 + num2).toString());
+        }else if(operator === "-"){
+            setDisplayValue((num1 - num2).toString());
+        }else if(operator === "x"){
+            setDisplayValue((num1 * num2).toString()); 
+        }else if (operator === "÷"){
+            setDisplayValue((num1/num2).toString());
+        }
+
+        setOperator('');
+        setFirstValue('');
+    }
+
 
 
   return (
@@ -51,7 +69,7 @@ export default function Calculator() {
         <Button title= '0' type='number' onPress={() => handleNumberInput('0')}/>
         <Button title = '00' type='number' onPress={() => handleNumberInput('00')}/>
         <Button title = '.' type='number' onPress={() => handleNumberInput('.')}/>
-        <Button title = '=' type='right'/>
+        <Button title = '=' type='right' onPress={() => handleCalculation()}/>
       </View>
     </View>
   )
