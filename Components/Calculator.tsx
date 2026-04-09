@@ -35,19 +35,27 @@ export default function Calculator() {
             setDisplayValue((num1 * num2).toString()); 
         }else if (operator === "÷"){
             setDisplayValue((num1/num2).toString());
+        }else if (operator === "%"){
+            setDisplayValue((num1%num2).toString());
         }
 
         setOperator('');
         setFirstValue('');
-    }
+    };
 
     const handleClear = () => {
         setDisplayValue('0');
         setOperator('');
         setFirstValue('');
-    }
+    };
 
-
+    const handleDelete = () => {
+        if(displayValue.length === 1){
+            setDisplayValue('0');
+        }else{
+            setDisplayValue(displayValue.slice(0,-1));
+        }
+    };
 
   return (
     <View style = {styles.container}>
@@ -57,7 +65,7 @@ export default function Calculator() {
       </View>
       <View style = {styles.keypad}>
         <Button title= 'C' type='top' onPress={() => handleClear()}/>
-        <Button title = '⌫' type='top'/>
+        <Button title = '⌫' type='top' onPress={() => handleDelete()}/>
         <Button title = '%' type='top' onPress={() => handleOperator('%')}/>
         <Button title = '÷' type='right'onPress={() => handleOperator('÷')}/>
         <Button title= '7' type='number' onPress={() => handleNumberInput('7')}/>
