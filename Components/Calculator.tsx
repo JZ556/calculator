@@ -41,6 +41,12 @@ export default function Calculator() {
         setFirstValue('');
     }
 
+    const handleClear = () => {
+        setDisplayValue('0');
+        setOperator('');
+        setFirstValue('');
+    }
+
 
 
   return (
@@ -50,7 +56,7 @@ export default function Calculator() {
         <Text style = {{fontSize:70, fontWeight:'300'}}>{displayValue}</Text>
       </View>
       <View style = {styles.keypad}>
-        <Button title= 'C' type='top'/>
+        <Button title= 'C' type='top' onPress={() => handleClear()}/>
         <Button title = '⌫' type='top'/>
         <Button title = '%' type='top' onPress={() => handleOperator('%')}/>
         <Button title = '÷' type='right'onPress={() => handleOperator('÷')}/>
