@@ -2,6 +2,7 @@ import { View, Text , StyleSheet,  } from 'react-native'
 import React, { useState } from 'react'
 import { Colors } from '@/utils/Colors'
 import {Button} from '@/Components/Button'
+import MathEngine from '@/utils/MathEngine'
 
 export default function Calculator() {
     const [firstValue, setFirstValue] = useState('');
@@ -27,19 +28,10 @@ export default function Calculator() {
         const num1: number = parseFloat(firstValue);
         const num2: number = parseFloat(displayValue);
 
-        if (operator === "+"){
-            setDisplayValue((num1 + num2).toString());
-        }else if(operator === "-"){
-            setDisplayValue((num1 - num2).toString());
-        }else if(operator === "x"){
-            setDisplayValue((num1 * num2).toString()); 
-        }else if (operator === "÷"){
-            setDisplayValue((num1/num2).toString());
-        }else if (operator === "%"){
-            setDisplayValue((num1%num2).toString());
-        }
-
-        setOperator('');
+        const result = MathEngine(num1,num2,operator);
+        
+        setDisplayValue(result);
+        setOperator('');    
         setFirstValue('');
     };
 
