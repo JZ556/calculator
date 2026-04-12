@@ -1,6 +1,8 @@
 import { Text, StyleSheet, View, TouchableOpacity, Switch} from "react-native";
 import React from "react";
 import { Colors } from "@/utils/Colors";
+import SettingsButton from "@/Components/SettingsButton";
+
 const Settings = () => {
     
     return(
@@ -10,6 +12,8 @@ const Settings = () => {
                 <Text>Dark Mode</Text>
                 <Switch/>
             </TouchableOpacity>
+            <Text style = {styles.title}>Theme Settings</Text>
+            <SettingsButton title='light' icon='lightbulb-on' onPress={()=> {}} isActive= {true}/>
         </View>
     )
 }
