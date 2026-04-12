@@ -1,0 +1,31 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # This tells GitHub to use a fresh Linux VM
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Pulls your code from GitHub into the VM
+    - uses: actions/checkout@v4
+
+    # 2. Sets up the Node.js environment
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x' # Matches your local v22.18.0
+        cache: 'npm'         # Speeds up future runs by caching node_modules
+
+    # 3. Installs your dependencies (React, Expo, etc.)
+    - name: Install dependencies
+      run: npm install
+
+    # 4. Runs your Jest tests
+    - name: Run tests
+      run: npm test
