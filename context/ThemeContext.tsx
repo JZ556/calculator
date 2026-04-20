@@ -11,7 +11,7 @@ export const ThemeContext = createContext<ThemeContextType|undefined>({
 });
 
 const ThemeProvider = ({children} : {children:ReactNode}) => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState<string>('light');
     return(
         <ThemeContext.Provider value = {{currentTheme,toggleTheme}}>
             {children}
