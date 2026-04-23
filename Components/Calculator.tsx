@@ -1,13 +1,15 @@
 import { View, Text , StyleSheet,  } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Colors } from '@/utils/Colors'
 import {Button} from '@/Components/Button'
 import MathEngine from '@/utils/MathEngine'
+import { ThemeContext } from '@/context/ThemeContext'
 
 export default function Calculator() {
     const [firstValue, setFirstValue] = useState('');
     const [displayValue, setDisplayValue] = useState('0');
     const [operator, setOperator] = useState('');
+    const {currentTheme} = useContext(ThemeContext)
 
     const handleNumberInput = (num: string) => {
         if(displayValue === '0'){
@@ -51,11 +53,11 @@ export default function Calculator() {
 
   return (
     <View style = {styles.container}>
-      <View style = {styles.display}>
-        <Text style = {{fontSize:30, fontWeight: '300'}}>{firstValue + operator}</Text>
-        <Text style = {{fontSize:70, fontWeight:'300'}}>{displayValue}</Text>
+      <View style = {[styles.display,{backgroundColor: currentTheme === 'dark' ? Colors.dark : Colors.grey }]}>
+        <Text style = {{fontSize:30, fontWeight: '300', color: currentTheme === 'dark' ? Colors.white : Colors.black}}>{firstValue + operator}</Text>
+        <Text style = {{fontSize:70, fontWeight:'300',color: currentTheme === 'dark' ? Colors.white : Colors.black}}>{displayValue}</Text>
       </View>
-      <View style = {styles.keypad}>
+      <View style = {[styles.keypad,{backgroundColor: currentTheme === 'dark' ? Colors.dark : Colors.light}]}>
         <Button title= 'C' type='top' onPress={() => handleClear()}/>
         <Button title = '⌫' type='top' onPress={() => handleDelete()}/>
         <Button title = '%' type='top' onPress={() => handleOperator('%')}/>
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
     },
     display:{
         flex:1,
-        backgroundColor: Colors.grey,
+        //backgroundColor: Colors.grey,
         paddingVertical:20,
         paddingHorizontal:40,
         alignItems:"flex-end",
