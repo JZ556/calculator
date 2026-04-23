@@ -1,20 +1,27 @@
-import {createContext} from 'react';
+import { createContext, useState, ReactNode } from 'react';
 
 export type ThemeContextType = {
-    currentTheme : string;
-    toggleTheme : (newTheme:string) => void;
-}
+  currentTheme: string;
+  toggleTheme: (newTheme: string) => void;
+};
 
-export const ThemeContext = createContext<ThemeContextType|undefined>({
-    currentTheme : 'light',
-    toggleTheme : () => {}
+export const ThemeContext = createContext<ThemeContextType>({
+  currentTheme: 'light',
+  toggleTheme: () => {},
 });
 
-const ThemeProvider = ({children} : {children:ReactNode}) => {
-    const [theme, setTheme] = useState<string>('light');
-    return(
-        <ThemeContext.Provider value = {{currentTheme,toggleTheme}}>
-            {children}
-        </ThemeContext.Provider>
-    )
+const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [theme, setTheme] = useState<string>('light');
+
+  const toggleTheme = (newTheme: string) => {
+    setTheme(newTheme);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ currentTheme: theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
+
+export default ThemeProvider;
