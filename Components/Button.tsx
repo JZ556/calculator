@@ -21,23 +21,30 @@ export const Button = ({
         {
           backgroundColor:
             currentTheme === 'dark'
-              ? (type === 'top'
+              ? type === 'top'
                 ? Colors.btnLight
                 : type === 'right'
                   ? Colors.btnRight
-                  : Colors.btnDark)
-              : (type === 'top'
+                  : Colors.btnDark
+              : type === 'top'
                 ? Colors.btnDark
                 : type === 'right'
                   ? Colors.btnRight
-                  : Colors.btnLight)
+                  : Colors.btnLight,
         },
       ]}
       onPress={onPress}>
       <Text
         style={{
           fontSize: 34,
-          color: type === 'number' ? Colors.black : Colors.white,
+          color:
+            currentTheme === 'dark'
+              ? type === 'top'
+                ? Colors.black
+                : Colors.white
+              : type === 'number'
+                ? Colors.black
+                : Colors.white,
         }}>
         {title}
       </Text>
