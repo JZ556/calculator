@@ -1,41 +1,57 @@
 import { Text, StyleSheet, View, TouchableOpacity, Switch } from 'react-native';
-import React , { useContext }  from 'react';
+import React, { useContext } from 'react';
 import { Colors } from '@/utils/Colors';
 import SettingsButton from '@/Components/SettingsButton';
 import { Stack } from 'expo-router';
-import { ThemeContext } from '@/context/ThemeContext'
+import { ThemeContext } from '@/context/ThemeContext';
 
 const Settings = () => {
-  const {currentTheme, toggleTheme} = useContext(ThemeContext);
+  const { currentTheme, toggleTheme } = useContext(ThemeContext);
   return (
     <>
-    <Stack.Screen options = {{title:'Settings'}}/>
-    <View style={styles.container}>
-      <Text style={styles.title}>Theme Switch</Text>
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
-        <Text>Dark Mode</Text>
-        <Switch value = {currentTheme === 'dark'} onValueChange={() => toggleTheme(currentTheme === 'light' ? 'dark' : 'light')} />
-      </TouchableOpacity>
-      <Text style={styles.title}>Theme Settings</Text>
-      <SettingsButton
-        title="light"
-        icon="lightbulb-on"
-        onPress={() => {}}
-        isActive={true}
+      <Stack.Screen
+        options={{
+          title: 'Settings',
+          headerStyle: {
+            backgroundColor:
+              currentTheme === 'dark' ? Colors.dark : Colors.light,
+          },
+          headerTitleStyle: {
+            color: currentTheme === 'dark' ? Colors.white : Colors.black,
+          },
+        }}
       />
-      <SettingsButton
-        title="dark"
-        icon="weather-night"
-        onPress={() => {}}
-        isActive={false}
-      />
-      <SettingsButton
-        title="System"
-        icon="theme-light-dark"
-        onPress={() => {}}
-        isActive={false}
-      />
-    </View>
+      <View style={[styles.container,{backgroundColor:currentTheme ==='dark'? Colors.dark : Colors.grey}]}>
+        <Text style={[styles.title,{color: currentTheme ==='dark'? Colors.white:Colors.black}]}>Theme Switch</Text>
+        <TouchableOpacity style={[styles.button,{backgroundColor: currentTheme === 'dark'? Colors.btnDark:Colors.white}]} onPress={() => {}}>
+          <Text style = {{color: currentTheme === 'dark'? Colors.white:Colors.black}}>Dark Mode</Text>
+          <Switch
+            value={currentTheme === 'dark'}
+            onValueChange={() =>
+              toggleTheme(currentTheme === 'light' ? 'dark' : 'light')
+            }
+          />
+        </TouchableOpacity>
+        <Text style={[styles.title,{color: currentTheme ==='dark'? Colors.white:Colors.black}]}>Theme Settings</Text>
+        <SettingsButton
+          title="light"
+          icon="lightbulb-on"
+          onPress={() => {toggleTheme('light')}}
+          isActive={currentTheme === 'light'}
+        />
+        <SettingsButton
+          title="dark"
+          icon="weather-night"
+          onPress={() => {toggleTheme('dark')}}
+          isActive={currentTheme ==='dark'}
+        />
+        <SettingsButton
+          title="System"
+          icon="theme-light-dark"
+          onPress={() => {}}
+          isActive={false}
+        />
+      </View>
     </>
   );
 };
