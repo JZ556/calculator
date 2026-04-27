@@ -6,7 +6,7 @@ import { Stack } from 'expo-router';
 import { ThemeContext } from '@/context/ThemeContext';
 
 const Settings = () => {
-  const { currentTheme, toggleTheme } = useContext(ThemeContext);
+  const { currentTheme, toggleTheme, useSystemTheme } = useContext(ThemeContext);
   return (
     <>
       <Stack.Screen
@@ -48,7 +48,7 @@ const Settings = () => {
         <SettingsButton
           title="System"
           icon="theme-light-dark"
-          onPress={() => {}}
+          onPress={useSystemTheme}
           isActive={false}
         />
       </View>
