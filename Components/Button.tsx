@@ -7,17 +7,25 @@ export const Button = ({
   title,
   type,
   onPress,
+  size,
 }: {
   title: string;
   type: 'top' | 'right' | 'number';
   onPress: () => void;
+  size: number;
 }) => {
   const { currentTheme } = useContext(ThemeContext);
+  const textSize = Math.max(24, Math.min(34, size * 0.45));
 
   return (
     <TouchableOpacity
       style={[
         styles.button,
+        {
+          width: size,
+          height: size,
+          borderRadius: size * 0.15,
+        },
         {
           backgroundColor:
             currentTheme === 'dark'
@@ -36,7 +44,7 @@ export const Button = ({
       onPress={onPress}>
       <Text
         style={{
-          fontSize: 34,
+          fontSize: textSize,
           color:
             currentTheme === 'dark'
               ? type === 'top'
@@ -54,9 +62,6 @@ export const Button = ({
 
 const styles = StyleSheet.create({
   button: {
-    height: 70,
-    width: 70,
-    borderRadius: 10,
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
