@@ -15,7 +15,7 @@ export default function Calculator() {
     const keypadPadding = 16;
     const keypadGap = 12;
     const dynamicButtonSize = Math.floor((width - keypadPadding * 2 - keypadGap * 3) / 4);
-    const buttonSize = Math.max(52, Math.min(70, dynamicButtonSize));
+    const buttonSize = Math.max(52, dynamicButtonSize);
 
     const handleNumberInput = (num: string) => {
         if(displayValue === '0'){
